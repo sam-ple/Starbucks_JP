@@ -6,7 +6,7 @@ base_url = "https://store.starbucks.co.jp/detail-"
 
 # 店舗番号の範囲を指定
 start_number = 1
-end_number = 10
+end_number = 500
 
 # 出力ファイル名
 output_file = "starbucks_stores_#{start_number}_#{end_number}.md"
@@ -58,7 +58,7 @@ stores = []
     }
 
     # サーバーへの負荷軽減のための待機
-    sleep(rand(3..5))
+    sleep(rand(5..10))
 
   rescue OpenURI::HTTPError => e
     puts "店舗番号 #{store_number} は存在しないか、アクセスに失敗しました: #{e.message}"
