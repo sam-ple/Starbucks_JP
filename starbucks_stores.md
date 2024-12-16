@@ -1985,4 +1985,4 @@
 |  | 4468 | 宮城県 | <a href="https://store.starbucks.co.jp/detail-4468/" target="_blank">仙台パルコ店</a> | <a href="https://www.google.com/maps/search/スターバックス+コーヒー+仙台パルコ店" target="_blank">宮城県 仙台市青葉区 中央1-2-3 仙台パルコ4階</a> | <a href="https://www.starbucks.co.jp/mystarbucks/mystore/images/stamp/4468.png" target="_blank">スタンプ</a> |
 |  | 4478 | 宮城県 | <a href="https://store.starbucks.co.jp/detail-4478/" target="_blank">イオンモール名取1階店</a> | <a href="https://www.google.com/maps/search/スターバックス+コーヒー+イオンモール名取1階店" target="_blank">宮城県 名取市 杜せきのした5-3-1 イオンモール名取1階</a> | <a href="https://www.starbucks.co.jp/mystarbucks/mystore/images/stamp/4478.png" target="_blank">スタンプ</a> |
 |  | 4483 | 福井県 | <a href="https://store.starbucks.co.jp/detail-4483/" target="_blank">そよら福井開発店</a> | <a href="https://www.google.com/maps/search/スターバックス+コーヒー+そよら福井開発店" target="_blank">福井県 福井市 西開発3-205 そよら福井開発1階</a> | <a href="https://www.starbucks.co.jp/mystarbucks/mystore/images/stamp/4483.png" target="_blank">スタンプ</a> |
-|  
+
