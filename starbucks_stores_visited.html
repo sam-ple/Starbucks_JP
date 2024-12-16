@@ -26,13 +26,75 @@
         border-bottom: 1px solid lightgray;
         vertical-align: top;
       }
+
+    .table_design {
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+  max-width: 700px;
+  border-radius: 20px;
+  overflow: hidden;
+  text-align: center;
+}
+.table_design tr {
+  background-color: #e6f1f6;
+}
+.table_design tr:nth-child(even) {
+  background-color: #fff;
+}
+.table_design th, .table_design td {
+  padding: 1em;
+}
+.table_design thead th {
+  background-color: #4d9bc1;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+}
+.table_design tbody th {
+  color: #4d9bc1;
+}
+@media screen and (max-width: 787px) {
+  .table_design {
+    border-radius: 0;
+    text-align: left;
+  }
+  .table_design thead {
+    display:none;
+  }
+  .table_design tr {
+    background-color: unset;
+  }
+  .table_design th, .table_design td {
+    display: block;
+    border: 0;
+    border-bottom: 1px solid #4d9bc1;
+  }
+  .table_design tbody th{
+    background: #4d9bc1;
+    color:#fff;
+    text-align: center;
+  }
+  .table_design td::before{
+    content: attr(data-label);
+    background-color: #e6f1f6;
+    font-weight: bold;
+    display: inline-block;
+    width: 20%;
+    min-width: 4em;
+    text-align: center;
+    margin-right: 0.5em;
+    padding: 4px;
+    border-radius: 100vh;
+  }
+}
     </style>
   </head>
 
   <body>
     <h1>スターバックス店舗</h1>
 
-<table>
+<table class="table_design">
 <thead>
 <tr>
 <th>訪問</th>
