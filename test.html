@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>タイトル</title>
+    <style>
+      button {
+        margin: 0 0 1em 0.5em;
+      }
+      table {
+        border-collapse: collapse;
+      }
+      th {
+        color: white;
+        background: navy;
+        cursor: pointer;
+      }
+      th.sort-asc::after {
+        content: '🔼';
+      }
+      th.sort-desc::after {
+        content: '🔽';
+      }
+      td {
+        padding: 0 0.3em;
+        border-bottom: 1px solid lightgray;
+        vertical-align: top;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>タイトル</h1>
+    <table>
+      <tr><th>見出し1</th><th>見出し2</th><th>見出し3</th></tr>
+      <tr><td>あああ</td><td>CCC</td><td>333</td></tr>
+      <tr><td>いいい</td><td>BBB</td><td>111</td></tr>
+      <tr><td>ううう</td><td>AAA</td><td>222</td></tr>
+    </table>
+
+    <script>
+      initialize();
+
+      function initialize() {
+        const table = document.querySelector('table');
+        const tableParent = table.parentElement;
+
+        const input = document.createElement('input');
+        input.addEventListener('keypress', () => {
+          if (event.key === 'Enter') filterRows();
+        });
+        tableParent.insertBefore(input, table);
+
+        const searchButton = document.createElement('button');
+        searchButton.textContent = '正規表現で検索';
+        searchButton.onclick = filterRows;
+        tableParent.insertBefore(searchButton, table);
+
+        const resetButton = document.createElement('button');
+        resetButton.textContent = '全て表示';
+        resetButton.onclick = resetFilter;
+        tableParent.insertBefore(resetButton, table);
+
+        document.querySelectorAll('th').forEach(th => th.onclick = sortRows);
+        document.querySelector('th').classList.add('sort-asc');
+      }
+
+      function filterRows() {
+        const keyword = document.querySelector('input').value;
+        const regex = new RegExp(keyword, 'i');
+        const table = document.querySelector('table');
+        for (let i = 1; i < table.rows.length; i++) {
+          const row = table.rows[i];
+          row.style.display = 'none';
+          for (let j = 0; j < row.cells.length; j++) {
+            if (row.cells[j].textContent.match(regex)) {
+              row.style.display = 'table-row';
+              break;
+            }
+          }
+        }
+      }
+
+      function resetFilter() {
+        document.querySelector('input').value = '';
+        filterRows();
+      }
+
+      function sortRows() {
+        const table = document.querySelector("table");
+        const records = [];
+        for (let i = 1; i < table.rows.length; i++) {
+          const record = {};
+          record.row = table.rows[i];
+          record.key = table.rows[i].cells[this.cellIndex].textContent;
+          records.push(record);
+        }
+        if (this.classList.contains('sort-asc')) {
+          records.sort(compareKeysReverse);
+          purgeSortMarker();
+          this.classList.add('sort-desc');
+        } else {
+          records.sort(compareKeys);
+          purgeSortMarker();
+          this.classList.add('sort-asc');
+        }
+        for (let i = 0; i < records.length; i++) {
+          table.appendChild(records[i].row);
+        }
+      }
+
+      function purgeSortMarker() {
+        document.querySelectorAll('th').forEach(th => {
+          th.classList.remove('sort-asc');
+          th.classList.remove('sort-desc');
+        });
+      }
+
+      function compareKeys(a, b) {
+        if (a.key < b.key) return -1;
+        if (a.key > b.key) return 1;
+        return 0;
+      }
+
+      function compareKeysReverse(a, b) {
+        if (a.key < b.key) return 1;
+        if (a.key > b.key) return -1;
+        return 0;
+      }
+    </script>
+  </body>
+</html>
